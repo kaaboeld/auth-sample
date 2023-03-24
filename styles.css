@@ -1,0 +1,98 @@
+:root {
+  --color-primary: #192744;
+  --color-secondary: #D31775;
+  --color-tertiary: #9932cc;
+  --border-radius:4px;
+  --border-color-origin: #000;
+}
+body{
+  margin:0;
+  font-family: sans-serif;
+  font-size: 16px;
+  background:var(--color-primary);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button,input{
+  border:none;
+  outline:none;
+  background:transparent;
+}
+button:disabled{
+  opacity:0.5;
+  cursor:auto !important;
+}
+button:disabled:hover,button:disabled:active{
+  background:#777 !important;
+}
+.form{
+  transition: all .7s;
+  background:#fff;
+  padding:2rem;
+  margin:0;
+  border-radius:var(--border-radius);
+  width:320px;
+}
+
+.form{
+  marogin:0;
+}
+
+.form .field:not(:last-child){
+  margin-bottom:1.5rem;
+}
+
+.form .hint{
+  color:var(--color-secondary);
+  font-size:70%;
+  margin-top:.25rem;
+  display:none;
+}
+.form .hint.show{
+  display:block;
+}
+
+.form .field span{
+  display:block;
+  margin-bottom:.5rem;
+  color:#777;
+  font-size:70%;
+}
+
+.form .field input{
+  transition:border-color .3s;
+  padding:.5rem 0;
+  width:100%;
+  border:none;
+  border-bottom:1px solid rgba(0,0,0,.2);
+}
+
+.form .field input:focus{
+  border-bottom-color:var(--color-tertiary);
+}
+
+.form .actions{
+  margin-top:3rem;
+  text-align:center;
+}
+
+.form .actions button{
+  transition: all .7s;
+  background:var(--color-tertiary);
+  border-radius:var(--border-radius);
+  color:#fff;
+  cursor:pointer;
+  padding:.5rem 1rem;
+}
+
+.form .actions button:hover, .form .actions button:active , .form .actions button:focus{
+  background:var(--color-secondary);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .form .field input{
+    border-bottom:1px solid rgba(0,0,0,.5);
+  }
+}
