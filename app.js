@@ -6,7 +6,7 @@ document.querySelector("#form").addEventListener("submit", (e) => {
   console.table(data)
 })
 
-function getValidationPasswordStatus(str) {
+async function getValidationPasswordStatus(str) {
   if (!testPassword(str)) {
     errMsg()
     testSubmit(true)
@@ -14,10 +14,14 @@ function getValidationPasswordStatus(str) {
   }
   okMsg()
   testSubmit(false)
+  const res = await fetch('/response.json')
+  const data = await res.json()
+  console.log('data', data)
 }
 
 function testPassword(str) {
   const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  console.log(regex.test(str))
   return regex.test(str);
 }
 
