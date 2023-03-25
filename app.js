@@ -1,10 +1,17 @@
-document.querySelector("#form").addEventListener("submit", (e) => {
+document.querySelector("#form").addEventListener("submit", async (e) => {
   e.preventDefault()
   const formData = new FormData(e.target)
   const data = Object.fromEntries(formData.entries())
   getValidationPasswordStatus(data.password)
   console.table(data)
+  await submit()
 })
+
+async function submit() {
+  const res = await fetch('https://creacl.co/response.json')
+  const data = await res.json()
+  console.log('data', data)
+}
 
 async function getValidationPasswordStatus(str) {
   if (!testPassword(str)) {
@@ -14,9 +21,6 @@ async function getValidationPasswordStatus(str) {
   }
   okMsg()
   testSubmit(false)
-  const res = await fetch('/response.json')
-  const data = await res.json()
-  console.log('data', data)
 }
 
 function testPassword(str) {
